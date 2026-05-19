@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Gemini Chat</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/css/style.css" />
+</head>
+<body>
+
+  <div class="grain"></div>
+
+  <div class="app-shell">
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <div class="logo">
+          <span class="logo-gem">✦</span>
+          <span class="logo-text">GemChat</span>
+        </div>
+        <p class="sidebar-sub">Powered by Gemini AI</p>
+      </div>
+
+      <div class="sidebar-actions">
+        <button class="new-chat-btn" onclick="newChat()">
+          <span>+</span> New Chat
+        </button>
+      </div>
+
+      <div class="model-info">
+        <div class="model-badge">
+          <span class="dot"></span>
+          gemini-2.5-flash
+        </div>
+        <p class="model-note">Multi-turn conversations enabled</p>
+      </div>
+
+      <div class="sidebar-footer">
+        <p>Built with Flask + Python</p>
+      </div>
+    </aside>
+
+    <!-- Main Chat Area -->
+    <main class="chat-area">
+
+      <div class="chat-topbar">
+        <div class="chat-title" id="chatTitle">New Conversation</div>
+        <button class="reset-btn" onclick="newChat()" title="Reset conversation">↺ Reset</button>
+      </div>
+
+      <div class="messages-container" id="messagesContainer">
+        <!-- Welcome Screen -->
+        <div class="welcome-screen" id="welcomeScreen">
+          <div class="welcome-gem">✦</div>
+          <h1 class="welcome-title">Hello there.</h1>
+          <p class="welcome-sub">Ask me anything. I'm powered by Google's Gemini AI.</p>
+          <div class="suggestion-chips">
+            <button class="chip" onclick="sendSuggestion(this)">Explain quantum computing</button>
+            <button class="chip" onclick="sendSuggestion(this)">Write a Python script</button>
+            <button class="chip" onclick="sendSuggestion(this)">Summarize a topic</button>
+            <button class="chip" onclick="sendSuggestion(this)">Give me a fun fact</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Input Bar -->
+      <div class="input-bar">
+        <div class="input-wrapper">
+          <textarea
+            id="userInput"
+            placeholder="Type your message…"
+            rows="1"
+            onkeydown="handleKey(event)"
+            oninput="autoResize(this)"
+          ></textarea>
+          <button class="send-btn" id="sendBtn" onclick="sendMessage()">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="22" y1="2" x2="11" y2="13"></line>
+              <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+            </svg>
+          </button>
+        </div>
+        <p class="input-hint">Enter to send · Shift+Enter for new line</p>
+      </div>
+
+    </main>
+  </div>
+
+  <script src="/static/js/chat.js"></script>
+</body>
+</html>
